@@ -1,11 +1,10 @@
 import React from 'react';
+import HeaderNav from './containers/HeaderNav/HeaderNav';
 
 const App = () => {
   return (
     <div className="App">
-      <header className="App-header">
-        Test
-      </header>
+      <HeaderNav />
     </div>
   );
 };
