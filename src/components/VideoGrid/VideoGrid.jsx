@@ -24,7 +24,7 @@ const VideoGrid = (props) => {
         </div>
         {!props.hideDivider && <Divider />}
         </>
-    )
-}
+    );
+};
 
 export default VideoGrid;

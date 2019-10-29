@@ -5,7 +5,7 @@ import './Home.scss';
 
 const Home = () => {
     return (
-        <React.Fragment>
+        <>
         <SideBar />
         <div className='home'>
           <div className="responsive-video-grid-container">
@@ -13,7 +13,7 @@ const Home = () => {
             <VideoGrid title='Autos & Vehicles' hideDivider={true}/>
           </div>
         </div>
-        </React.Fragment>
+        </>
     );
 };
 
