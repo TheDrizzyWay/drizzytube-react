@@ -1,14 +1,13 @@
 import React from 'react';
 import './Watch.scss';
-import VideoPreview from '../../components/VideoPreview/VideoPreview';
+import RelatedVideos from '../../components/RelatedVideos/RelatedVideos';
 
 const Watch = () => {
     return (
         <>
-            <VideoPreview horizontal={true} />
-            <VideoPreview />
+            <RelatedVideos />
         </>
-    )
-}
+    );
+};
 
 export default Watch;
