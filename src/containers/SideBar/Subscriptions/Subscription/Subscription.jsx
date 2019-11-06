@@ -22,6 +22,6 @@ const Subscription = (props) => {
             </div>
         </Menu.Item>
     );
-};
+}
 
 export default Subscription;

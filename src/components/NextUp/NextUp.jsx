@@ -3,7 +3,7 @@ import { Checkbox, Divider } from 'semantic-ui-react';
 import VideoPreview from '../VideoPreview/VideoPreview';
 import './NextUp.scss';
 
-const NextUp = (props) => {
+const NextUp = () => {
     return (
         <>
             <div className='next-up-container'>
@@ -16,7 +16,7 @@ const NextUp = (props) => {
             <VideoPreview horizontal={true}/>
             <Divider/>
         </>
-    )
+    );
 }
 
 export default NextUp;

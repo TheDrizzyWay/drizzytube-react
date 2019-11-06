@@ -1,7 +1,7 @@
 import React from 'react';
 import './RelatedVideos.scss';
 import VideoPreview from '../VideoPreview/VideoPreview';
-import NextUp from '../NextUp/NextUp'
+import NextUp from '../NextUp/NextUp';
 
 const RelatedVideos = () => {
     return (
@@ -12,6 +12,6 @@ const RelatedVideos = () => {
             <VideoPreview horizontal={true} />
         </div>
     );
-};
+}
 
 export default RelatedVideos;

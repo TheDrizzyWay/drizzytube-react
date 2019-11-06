@@ -13,6 +13,6 @@ const SideBarItem = (props) => {
             </div>
         </Menu.Item>
     );
-};
+}
 
 export default SideBarItem;

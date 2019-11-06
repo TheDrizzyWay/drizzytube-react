@@ -9,6 +9,6 @@ const AppLayout = (props) => {
             {props.children}
         </div>
     );
-};
+}
 
 export default AppLayout;

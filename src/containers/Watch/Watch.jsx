@@ -8,6 +8,6 @@ const Watch = () => {
             <RelatedVideos />
         </>
     );
-};
+}
 
 export default Watch;

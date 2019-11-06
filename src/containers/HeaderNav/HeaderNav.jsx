@@ -37,7 +37,7 @@ const HeaderNav = () => {
             </Menu.Menu>
             </Menu.Menu>
         </Menu>
-    )
-};
+    );
+}
 
 export default HeaderNav;

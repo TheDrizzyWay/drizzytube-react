@@ -30,7 +30,7 @@ const SideBar = () => {
                 <SideBarFooter />
             </Menu>
         </div>
-    )
-};
+    );
+}
 
 export default SideBar;

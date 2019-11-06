@@ -15,6 +15,6 @@ const Subscriptions = () => {
             <Divider/>
         </>
     );
-};
+}
 
 export default Subscriptions;

@@ -20,7 +20,7 @@ const VideoPreview = (props) => {
             </div>
             </div>
         </div>
-    )
-};
+    );
+}
 
 export default VideoPreview;
