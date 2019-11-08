@@ -1,11 +1,11 @@
 import React, { useEffect } from 'react';
 import { Route, Switch } from 'react-router-dom';
-import { bindActionCreators } from 'react-redux';
+import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import Home from './containers/Home/Home';
 import Watch from './containers/Watch/Watch';
 import AppLayout from './components/AppLayout/AppLayout';
-import { youtubeLibraryLoaded } from './store/reducers/api';
+import { youtubeLibraryLoaded } from './store/actions/api';
 
 const apiKey = process.env.REACT_APP_YOUTUBE_API_KEY;
 
