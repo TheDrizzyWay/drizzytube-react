@@ -5,22 +5,16 @@ import VideoGridHeader from './VideoGridHeader/VideoGridHeader';
 import VideoPreview from '../VideoPreview/VideoPreview';
 
 const VideoGrid = (props) => {
+    if (!props.videos || !props.videos.length) {
+        return <div/>;
+      }
+    const gridItems = props.videos.map(video => <VideoPreview video={video} key={video.id}/>);
+
     return (
         <>
         <VideoGridHeader title={props.title} />
         <div className='video-grid'>
-            <VideoPreview/>
-            <VideoPreview/>
-            <VideoPreview/>
-            <VideoPreview/>
-            <VideoPreview/>
-            <VideoPreview/>
-            <VideoPreview/>
-            <VideoPreview/>
-            <VideoPreview/>
-            <VideoPreview/>
-            <VideoPreview/>
-            <VideoPreview/>
+            {gridItems}
         </div>
         {!props.hideDivider && <Divider />}
         </>

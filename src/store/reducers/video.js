@@ -1,3 +1,4 @@
+import { createSelector } from 'reselect';
 import { MOST_POPULAR } from '../actions/video';
 import { SUCCESS } from '../actions';
 
@@ -38,5 +39,16 @@ const videosReducer = (state = initialState, { type, response }) => {
       return state;
   }
 };
+
+export const getMostPopularVideos = createSelector(
+  (state) => state.videos.byId,
+  (state) => state.videos.mostPopular,
+  (videosById, mostPopular) => {
+    if (!mostPopular || !mostPopular.items) {
+      return [];
+    }
+    return mostPopular.items.map(videoId => videosById[videoId]);
+  }
+);
 
 export default videosReducer;

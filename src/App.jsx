@@ -9,9 +9,9 @@ import { youtubeLibraryLoaded } from './store/actions/api';
 
 const apiKey = process.env.REACT_APP_YOUTUBE_API_KEY;
 
-const App = () => {
+const App = (props) => {
 
-  const loadYoutubeApi = (props) => {
+  const loadYoutubeApi = () => {
     const script = document.createElement("script");
     script.src = "https://apis.google.com/js/client.js";
 
@@ -29,7 +29,7 @@ const App = () => {
 
   useEffect(() => {
     loadYoutubeApi();
-  }, []);
+  });
 
   return (
       <AppLayout>
