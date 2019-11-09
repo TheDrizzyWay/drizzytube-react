@@ -1,5 +1,5 @@
 import { all, call, put, fork } from 'redux-saga/effects';
-import { watchMostPopularVideos } from './video';
+import { watchMostPopularVideos, watchVideoCategories } from './video';
 
 export function* fetchEntity(request, entity, ...args) {
   try {
@@ -12,6 +12,7 @@ export function* fetchEntity(request, entity, ...args) {
 
 export default function *rootSaga() {
   yield all([
-    fork(watchMostPopularVideos)
+    fork(watchMostPopularVideos),
+    fork(watchVideoCategories)
   ]);
 }

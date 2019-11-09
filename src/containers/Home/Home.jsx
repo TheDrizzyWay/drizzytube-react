@@ -7,13 +7,14 @@ import SideBar from '../SideBar/SideBar';
 import HomeContent from './HomeContent/HomeContent';
 
 const Home = (props) => {
-  const { fetchMostPopularVideos, youtubeLibraryLoaded } = props;
+  const { fetchMostPopularVideos, fetchVideoCategories, youtubeLibraryLoaded } = props;
 
   useEffect(() => {
     if (youtubeLibraryLoaded) {
       fetchMostPopularVideos();
+      fetchVideoCategories();
     }
-  }, [fetchMostPopularVideos, youtubeLibraryLoaded]);
+  }, [fetchMostPopularVideos, fetchVideoCategories, youtubeLibraryLoaded]);
 
     return (
       <>
@@ -31,7 +32,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   const fetchMostPopularVideos = videoActions.mostPopular.request;
-  return bindActionCreators({ fetchMostPopularVideos }, dispatch);
+  const fetchVideoCategories = videoActions.categories.request;
+  return bindActionCreators({ fetchMostPopularVideos, fetchVideoCategories }, dispatch);
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Home);

@@ -63,15 +63,20 @@ export function buildApiRequest(requestMethod, path, params, properties) {
     if (loadDescription) {
       fields += ',items/snippet/description';
     }
-    return buildApiRequest('GET',
-      '/youtube/v3/videos',
-      {
+    return buildApiRequest('GET', '/youtube/v3/videos', {
         part: 'snippet,statistics,contentDetails',
         chart: 'mostPopular',
         maxResults: amount,
         regionCode: 'US',
         pageToken: nextPageToken,
         fields,
+      }, null);
+  }
+
+  export function buildVideoCategoriesRequest() {
+    return buildApiRequest('GET', '/youtube/v3/videoCategories', {
+        'part': 'snippet',
+        'regionCode': 'US'
       }, null);
   }
   
