@@ -58,7 +58,7 @@ export function buildApiRequest(requestMethod, path, params, properties) {
     return resource;
   };
 
-  export function buildMostPopularVideosRequest(amount = 12, loadDescription = false, nextPageToken) {
+  export function buildMostPopularVideosRequest(amount = 12, loadDescription = false, nextPageToken, videoCategoryId = null) {
     let fields = 'nextPageToken,prevPageToken,items(contentDetails/duration,id,snippet(channelId,channelTitle,localized/title,publishedAt,thumbnails/medium,title),statistics/viewCount),pageInfo(totalResults)';
     if (loadDescription) {
       fields += ',items/snippet/description';
@@ -70,6 +70,7 @@ export function buildApiRequest(requestMethod, path, params, properties) {
         regionCode: 'US',
         pageToken: nextPageToken,
         fields,
+        videoCategoryId
       }, null);
   }
 

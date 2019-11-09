@@ -1,5 +1,5 @@
 import { all, call, put, fork } from 'redux-saga/effects';
-import { watchMostPopularVideos, watchVideoCategories } from './video';
+import { watchMostPopularVideos, watchVideoCategories, watchMostPopularVideosByCategory } from './video';
 
 export function* fetchEntity(request, entity, ...args) {
   try {
@@ -10,9 +10,17 @@ export function* fetchEntity(request, entity, ...args) {
   }
 }
 
+export const ignoreErrors = (fn, ...args) => {
+  return () => {
+    const ignoreErrorCallback = (response) => response;
+    return fn(...args).then(ignoreErrorCallback, ignoreErrorCallback);
+  };
+};
+
 export default function *rootSaga() {
   yield all([
     fork(watchMostPopularVideos),
-    fork(watchVideoCategories)
+    fork(watchVideoCategories),
+    fork(watchMostPopularVideosByCategory)
   ]);
 }
