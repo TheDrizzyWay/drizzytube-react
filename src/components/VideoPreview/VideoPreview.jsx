@@ -1,6 +1,13 @@
 import React from 'react';
 import { Image } from 'semantic-ui-react';
+import TimeAgo from 'javascript-time-ago';
+import en from 'javascript-time-ago/locale/en';
+import { getShortNumberString } from '../../utils/number/number-format';
+import { getVideoDurationString } from '../../utils/date/date-format';
 import './VideoPreview.scss';
+
+TimeAgo.locale(en);
+const timeAgo = new TimeAgo('en-US');
 
 const VideoPreview = (props) => {
   const { video, horizontal } = props;
@@ -8,12 +15,27 @@ const VideoPreview = (props) => {
   
   const horizontalClass = horizontal ? 'horizontal': null;
 
+  const duration = video.contentDetails ? video.contentDetails.duration : null;
+  const videoDuration = getVideoDurationString(duration);
+
+  const getFormattedViewAndTime = (video) => {
+    const publicationDate = new Date(video.snippet.publishedAt);
+    const viewCount = video.statistics ? video.statistics.viewCount : null;
+    if (viewCount) {
+      const viewCountShort = getShortNumberString(video.statistics.viewCount);
+      return `${viewCountShort} views • ${timeAgo.format(publicationDate)}`;
+    }
+    return '';
+  };
+
+  const viewAndTimeString = getFormattedViewAndTime(video);
+
     return (
         <div className={['video-preview', horizontalClass].join(' ')}>
         <div className='image-container'>
           <Image src={video.snippet.thumbnails.medium.url} />
           <div className='time-label'>
-            <span>{video.contentDetails.duration}</span>
+            <span>{videoDuration}</span>
           </div>
         </div>
         <div className='video-info'>
@@ -21,7 +43,7 @@ const VideoPreview = (props) => {
             <div className='video-preview-metadata-container'>
                 <div className='channel-title'>{video.snippet.channelTitle}</div>
                 <div>
-                  <span>{video.statistics.viewCount} views • {video.snippet.publishedAt}</span>
+                  <span>{viewAndTimeString}</span>
                 </div>
             </div>
             </div>
