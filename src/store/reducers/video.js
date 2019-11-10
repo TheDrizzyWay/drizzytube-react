@@ -1,6 +1,8 @@
 import { createSelector } from 'reselect';
 import { MOST_POPULAR, VIDEO_CATEGORIES, MOST_POPULAR_BY_CATEGORY } from '../actions/video';
 import { SUCCESS } from '../actions';
+import { WATCH_DETAILS } from '../actions/watch';
+import { VIDEO_LIST_RESPONSE } from '../api/youtube-response-types';
 
 const initialState = {
   byId: {},
@@ -76,14 +78,27 @@ const reduceFetchMostPopularVideos = (response, prevState) => {
   
       const categoryId = categories[index];
       const {byId, byCategory} = groupVideosByIdAndCategory(response.result);
-      videoMap = {...videoMap, ...byId};
+      videoMap = { ...videoMap, ...byId };
       byCategoryMap[categoryId] = byCategory;
     });
   
     return {
       ...prevState,
-      byId: {...prevState.byId, ...videoMap},
-      byCategory: {...prevState.byCategory, ...byCategoryMap},
+      byId: { ...prevState.byId, ...videoMap },
+      byCategory: { ...prevState.byCategory, ...byCategoryMap },
+    };
+  };
+
+  const reduceWatchDetails = (responses, prevState) => {
+    const videoDetailResponse = responses.find(r => r.result.kind === VIDEO_LIST_RESPONSE);
+    const video = videoDetailResponse.result.items[0];
+  
+    return {
+      ...prevState,
+      byId: {
+        ...prevState.byId,
+        [video.id]: video
+      },
     };
   };
 
@@ -95,6 +110,8 @@ const videosReducer = (state = initialState, { type, response, categories }) => 
       return reduceFetchVideoCategories(response, state);
     case MOST_POPULAR_BY_CATEGORY[SUCCESS]:
       return reduceFetchMostPopularVideosByCategory(response, categories, state);
+    case WATCH_DETAILS[SUCCESS]:
+      return reduceWatchDetails(response, state);
     default:
       return state;
   }
