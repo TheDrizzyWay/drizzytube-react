@@ -42,7 +42,7 @@ const Home = (props) => {
         <SideBar />
         <HomeContent
           bottomReachedCallback={bottomReachedCallback}
-          showLoader={shouldShowLoader}
+          showLoader={shouldShowLoader()}
         />
       </>
     );

@@ -2,12 +2,7 @@ import React, { useEffect, useCallback } from 'react';
 import { withRouter } from 'react-router-dom';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import './Watch.scss';
-import Video from '../../components/Video/Video';
-import RelatedVideos from '../../components/RelatedVideos/RelatedVideos';
-import VideoMetaData from '../../components/VideoMetaData/VideoMetaData';
-import VideoInfoBox from '../../components/VideoInfoBox/VideoInfoBox';
-import Comments from '../Comments/Comments';
+import WatchContent from './WatchContent/WatchContent';
 import { getYoutubeLibraryLoaded } from '../../store/reducers/api';
 import * as watchActions from '../../store/actions/watch';
 
@@ -31,14 +26,10 @@ const Watch = (props) => {
         if (youtubeLibraryLoaded) fetchWatchContent();
     }, [youtubeLibraryLoaded, fetchWatchContent]);
 
+    const videoId = getVideoId();
+
     return (
-        <div className='watch-grid'>
-            <Video className='video' id='-7fuHEEmEjs' />
-            <VideoMetaData className='metadata' viewCount={1000}/>
-            <VideoInfoBox className='video-info-box'/>
-            <Comments className='comments'/>
-            <RelatedVideos className='relatedVideos'/>
-      </div>
+        <WatchContent videoId={videoId} />
     );
 }
 
