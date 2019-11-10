@@ -6,7 +6,12 @@ import VideoMetaData from '../../components/VideoMetaData/VideoMetaData';
 import VideoInfoBox from '../../components/VideoInfoBox/VideoInfoBox';
 import Comments from '../Comments/Comments';
 
-const Watch = () => {
+const Watch = (props) => {
+    const getVideoId = () => {
+        const searchParams = new URLSearchParams(props.location.search);
+        return searchParams.get('v');
+      };
+
     return (
         <div className='watch-grid'>
             <Video className='video' id='-7fuHEEmEjs' />

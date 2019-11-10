@@ -8,15 +8,23 @@ const VideoGrid = (props) => {
     if (!props.videos || !props.videos.length) {
         return <div/>;
       }
-    const gridItems = props.videos.map(video => <VideoPreview video={video} key={video.id}/>);
+    const gridItems = props.videos.map(video => {
+    return (
+        <VideoPreview
+            video={video}
+            key={video.id}
+            pathname='/watch'
+            search={`?v=${video.id}`}
+        />);
+    });
 
     return (
         <>
-        <VideoGridHeader title={props.title} />
-        <div className='video-grid'>
-            {gridItems}
-        </div>
-        {!props.hideDivider && <Divider />}
+            <VideoGridHeader title={props.title} />
+                <div className='video-grid'>
+                    {gridItems}
+                </div>
+            {!props.hideDivider && <Divider />}
         </>
     );
 }

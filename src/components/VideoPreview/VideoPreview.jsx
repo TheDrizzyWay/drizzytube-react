@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { Image } from 'semantic-ui-react';
 import TimeAgo from 'javascript-time-ago';
 import en from 'javascript-time-ago/locale/en';
@@ -31,6 +32,7 @@ const VideoPreview = (props) => {
   const viewAndTimeString = getFormattedViewAndTime(video);
 
     return (
+      <Link to={{pathname: props.pathname, search: props.search}}>
         <div className={['video-preview', horizontalClass].join(' ')}>
         <div className='image-container'>
           <Image src={video.snippet.thumbnails.medium.url} />
@@ -48,6 +50,7 @@ const VideoPreview = (props) => {
             </div>
             </div>
         </div>
+      </Link>
     );
 }
 
