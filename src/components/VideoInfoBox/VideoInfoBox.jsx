@@ -3,6 +3,7 @@ import { Image, Button, Divider } from 'semantic-ui-react';
 import Linkify from 'react-linkify';
 import { getPublishedAtDateString } from '../../utils/date/date-format';
 import './VideoInfoBox.scss';
+import { getShortNumberString } from '../../utils/number/number-format';
 
 const VideoInfoBox = (props) => {
     const [collapsed, setCollapsed] = useState(false);
@@ -10,8 +11,8 @@ const VideoInfoBox = (props) => {
         setCollapsed(!collapsed);
     };
 
-    const { video } = props;
-    if (!video) return <div/>;
+    const { video, channel } = props;
+    if (!video || !channel) return <div/>;
 
     const getDescriptionParagraphs = () => {
         const videoDescription = video.snippet ? video.snippet.description : null;
@@ -21,17 +22,26 @@ const VideoInfoBox = (props) => {
         return videoDescription.split('\n').map((paragraph, index) => <p key={index}><Linkify>{paragraph}</Linkify></p>);
       };
 
+    const getSubscriberButtonText = () => {
+        const parsedSubscriberCount = Number(channel.statistics.subscriberCount);
+        const subscriberCount = getShortNumberString(parsedSubscriberCount);
+        return `Subscribe ${subscriberCount}`;
+    };
+
     const descriptionParagraphs = getDescriptionParagraphs();
     const publishedAtString = getPublishedAtDateString(video.snippet.publishedAt);
+    const buttonText = getSubscriberButtonText();
+    const channelThumbnail = channel.snippet.thumbnails.medium.url;
+    const channelTitle = channel.snippet.title;
 
     return (
         <div className='video-info-box'>
-            <Image className='channel-image' src='http://via.placeholder.com/48x48' circular/>
+            <Image className='channel-image' src={channelThumbnail} circular/>
             <div className="video-info">
-                <div className='channel-name'>Channel Name</div>
+                <div className='channel-name'>{channelTitle}</div>
                 <div className='video-publication-date'>{publishedAtString}</div>
             </div>
-            <Button color='youtube'>91.5K Subscribe</Button>
+            <Button color='youtube'>{buttonText}</Button>
             <div className="video-description">
                 <div className={collapsed ? 'collapsed' : 'expanded'}>
                     {descriptionParagraphs}

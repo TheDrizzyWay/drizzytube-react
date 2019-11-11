@@ -1,7 +1,7 @@
 import {combineReducers} from 'redux';
 import apiReducer from './api';
 import videosReducer from './video';
-import channelsReducer from './channels';
+import channelsReducer from './channel';
 
 export default combineReducers({
   api: apiReducer,
