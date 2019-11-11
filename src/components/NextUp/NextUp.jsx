@@ -3,7 +3,7 @@ import { Checkbox, Divider } from 'semantic-ui-react';
 import VideoPreview from '../VideoPreview/VideoPreview';
 import './NextUp.scss';
 
-const NextUp = () => {
+const NextUp = (props) => {
     return (
         <>
             <div className='next-up-container'>
@@ -13,7 +13,7 @@ const NextUp = () => {
                 <Checkbox toggle defaultChecked/>
             </div>
             </div>
-            <VideoPreview horizontal={true}/>
+            <VideoPreview horizontal={true} video={props.video} pathname='/watch' search={`?v=${props.video.id}`} />
             <Divider/>
         </>
     );

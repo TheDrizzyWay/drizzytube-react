@@ -24,7 +24,7 @@ const Watch = (props) => {
 
     useEffect(() => {
         if (youtubeLibraryLoaded) fetchWatchContent();
-    }, [youtubeLibraryLoaded, fetchWatchContent]);
+    }, [youtubeLibraryLoaded, fetchWatchContent, location.key]);
 
     const videoId = getVideoId();
 

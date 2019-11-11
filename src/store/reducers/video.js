@@ -1,13 +1,14 @@
 import { createSelector } from 'reselect';
 import { MOST_POPULAR, VIDEO_CATEGORIES, MOST_POPULAR_BY_CATEGORY } from '../actions/video';
 import { SUCCESS } from '../actions';
-import { WATCH_DETAILS } from '../actions/watch';
+import { VIDEO_DETAILS, WATCH_DETAILS } from '../actions/watch';
 import { VIDEO_LIST_RESPONSE, SEARCH_LIST_RESPONSE } from '../api/youtube-response-types';
 
 const initialState = {
   byId: {},
   mostPopular: {},
-  categories: {}
+  categories: {},
+  related: {}
 };
 
 const reduceFetchMostPopularVideos = (response, prevState) => {
@@ -119,6 +120,22 @@ const reduceFetchMostPopularVideos = (response, prevState) => {
     };
   };
 
+  const reduceVideoDetails = (responses, prevState) => {
+    const videoResponses = responses.filter(response => response.result.kind === VIDEO_LIST_RESPONSE);
+    const parsedVideos = videoResponses.reduce((videoMap, response) => {
+      const video = response.result.items ? response.result.items[0] : null;
+      if (!video) return videoMap;
+
+      videoMap[video.id] = video;
+      return videoMap;
+      }, {});
+  
+    return {
+      ...prevState,
+      byId: {...prevState.byId, ...parsedVideos},
+    };
+  };
+
 
 const videosReducer = (state = initialState, { type, response, categories }) => {
   switch (type) {
@@ -130,6 +147,8 @@ const videosReducer = (state = initialState, { type, response, categories }) => 
       return reduceFetchMostPopularVideosByCategory(response, categories, state);
     case WATCH_DETAILS[SUCCESS]:
       return reduceWatchDetails(response, state);
+    case VIDEO_DETAILS[SUCCESS]:
+      return reduceVideoDetails(response, state);
     default:
       return state;
   }
@@ -184,5 +203,20 @@ export const videosByCategoryLoaded = createSelector(
 export const getVideoById = (state, videoId) => {
   return state.videos.byId[videoId];
 };
+
+const getRelatedVideoIds = (state, videoId) => {
+  const related = state.videos.related[videoId];
+  return related ? related.items : [];
+};
+
+export const getRelatedVideos = createSelector(
+  getRelatedVideoIds,
+  state => state.videos.byId,
+  (relatedVideoIds, videos) => {
+    if (relatedVideoIds) {
+      return relatedVideoIds.map(({ videoId }) => videos[videoId]).filter(video => video);
+    }
+    return [];
+  });
 
 export default videosReducer;

@@ -6,7 +6,7 @@ import VideoMetaData from '../../../components/VideoMetaData/VideoMetaData';
 import VideoInfoBox from '../../../components/VideoInfoBox/VideoInfoBox';
 import Comments from '../../Comments/Comments';
 import './WatchContent.scss';
-import { getVideoById } from '../../../store/reducers/video';
+import { getVideoById, getRelatedVideos } from '../../../store/reducers/video';
 
 const WatchContent = (props) => {
     if (!props.videoId) return <div/>;
@@ -17,13 +17,14 @@ const WatchContent = (props) => {
             <VideoMetaData className='metadata' video={props.video} />
             <VideoInfoBox className='video-info-box' video={props.video} />
             <Comments className='comments'/>
-            <RelatedVideos className='relatedVideos'/>
+            <RelatedVideos className='relatedVideos' videos={props.relatedVideos} />
         </div>
     );
 }
 
 const mapStateToProps = (state, props) => {
     return {
+      relatedVideos: getRelatedVideos(state, props.videoId),
       video: getVideoById(state, props.videoId)
     };
   };
