@@ -105,4 +105,12 @@ export function buildApiRequest(requestMethod, path, params, properties) {
       fields: 'kind,items(id,snippet(description,thumbnails/medium,title),statistics/subscriberCount)'
     }, null);
   }
+
+  export function buildCommentThreadRequest(videoId, nextPageToken) {
+    return buildApiRequest('GET', '/youtube/v3/commentThreads', {
+      part: 'id,snippet',
+      pageToken: nextPageToken,
+      videoId,
+    }, null);
+  }
   

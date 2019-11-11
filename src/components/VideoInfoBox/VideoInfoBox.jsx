@@ -46,7 +46,7 @@ const VideoInfoBox = (props) => {
                 <div className={collapsed ? 'collapsed' : 'expanded'}>
                     {descriptionParagraphs}
                 </div>
-                <Button compact onClick={toggleCollapse}>{collapsed ? 'Show Less' : 'Show More'}</Button>
+                <Button compact onClick={toggleCollapse}>{collapsed ? 'Show More' : 'Show Less'}</Button>
                 <Divider />
             </div>
         </div>

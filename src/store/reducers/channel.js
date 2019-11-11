@@ -42,7 +42,7 @@ const reduceWatchDetails = (responses, prevState) => {
   };
 
 
-export default function (state = initialState, { type, response }) {
+const channelsReducer = (state = initialState, { type, response }) => {
   switch (type) {
     case WATCH_DETAILS[SUCCESS]:
       return reduceWatchDetails(response, state);
@@ -51,10 +51,12 @@ export default function (state = initialState, { type, response }) {
     default:
       return state;
   }
-}
+};
 
 export const getChannel = (state, channelId) => {
     if (!channelId) return null;
     return state.channels.byId[channelId];
   };
+
+export default channelsReducer;
   
