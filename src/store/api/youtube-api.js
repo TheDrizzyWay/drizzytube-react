@@ -64,37 +64,45 @@ export function buildApiRequest(requestMethod, path, params, properties) {
       fields += ',items/snippet/description';
     }
     return buildApiRequest('GET', '/youtube/v3/videos', {
-        part: 'snippet,statistics,contentDetails',
-        chart: 'mostPopular',
-        maxResults: amount,
-        regionCode: 'US',
-        pageToken: nextPageToken,
-        fields,
-        videoCategoryId
-      }, null);
+      part: 'snippet,statistics,contentDetails',
+      chart: 'mostPopular',
+      maxResults: amount,
+      regionCode: 'US',
+      pageToken: nextPageToken,
+      fields,
+      videoCategoryId
+    }, null);
   }
 
   export function buildVideoCategoriesRequest() {
     return buildApiRequest('GET', '/youtube/v3/videoCategories', {
-        'part': 'snippet',
-        'regionCode': 'US'
-      }, null);
+      'part': 'snippet',
+      'regionCode': 'US'
+    }, null);
   }
 
   export function buildVideoDetailRequest(videoId) {
     return buildApiRequest('GET', '/youtube/v3/videos', {
-        part: 'snippet,statistics,contentDetails',
-        id: videoId,
-        fields: 'kind,items(contentDetails/duration,id,snippet(channelId,channelTitle,description,publishedAt,thumbnails/medium,title),statistics)'
-      }, null);
+      part: 'snippet,statistics,contentDetails',
+      id: videoId,
+      fields: 'kind,items(contentDetails/duration,id,snippet(channelId,channelTitle,description,publishedAt,thumbnails/medium,title),statistics)'
+    }, null);
   }
 
   export function buildRelatedVideosRequest(videoId, amountRelatedVideos = 12) {
     return buildApiRequest('GET', '/youtube/v3/search', {
-        part: 'snippet',
-        type: 'video',
-        maxResults: amountRelatedVideos,
-        relatedToVideoId: videoId,
-      }, null);
+      part: 'snippet',
+      type: 'video',
+      maxResults: amountRelatedVideos,
+      relatedToVideoId: videoId,
+    }, null);
+  }
+
+  export function buildChannelRequest(channelId) {
+    return buildApiRequest('GET', '/youtube/v3/channels', {
+      part: 'snippet,statistics',
+      id: channelId,
+      fields: 'kind,items(id,snippet(description,thumbnails/medium,title),statistics/subscriberCount)'
+    }, null);
   }
   

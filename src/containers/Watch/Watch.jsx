@@ -4,15 +4,16 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import WatchContent from './WatchContent/WatchContent';
 import { getYoutubeLibraryLoaded } from '../../store/reducers/api';
+import { getChannelId } from '../../store/reducers/video';
 import * as watchActions from '../../store/actions/watch';
+import { getSearchParam } from '../../utils/url';
 
 const Watch = (props) => {
     const { youtubeLibraryLoaded, fetchWatchDetails, history, location, channelId } = props;
 
     const getVideoId = useCallback(() => {
-        const searchParams = new URLSearchParams(location.search);
-        return searchParams.get('v');
-        }, [location.search]);
+      return getSearchParam(location, 'v');
+        }, [location]);
 
     const fetchWatchContent = useCallback(() => {
         const videoId = getVideoId();
@@ -29,13 +30,14 @@ const Watch = (props) => {
     const videoId = getVideoId();
 
     return (
-        <WatchContent videoId={videoId} />
+        <WatchContent videoId={videoId} channelId={channelId} />
     );
 }
 
-const mapStateToProps = state => {
+const mapStateToProps = (state, props) => {
     return {
       youtubeLibraryLoaded: getYoutubeLibraryLoaded(state),
+      channelId: getChannelId(state, props.location, 'v')
     };
   };
 
