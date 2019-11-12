@@ -4,11 +4,11 @@ import { Divider } from 'semantic-ui-react';
 import VideoGridHeader from './VideoGridHeader/VideoGridHeader';
 import VideoPreview from '../VideoPreview/VideoPreview';
 
-const VideoGrid = (props) => {
-    if (!props.videos || !props.videos.length) {
+const VideoGrid = ({ videos, title, hideDivider }) => {
+    if (!videos || !videos.length) {
         return <div/>;
       }
-    const gridItems = props.videos.map(video => {
+    const gridItems = videos.map(video => {
     return (
         <VideoPreview
             video={video}
@@ -20,11 +20,11 @@ const VideoGrid = (props) => {
 
     return (
         <>
-            <VideoGridHeader title={props.title} />
+            <VideoGridHeader title={title} />
                 <div className='video-grid'>
                     {gridItems}
                 </div>
-            {!props.hideDivider && <Divider />}
+            {!hideDivider && <Divider />}
         </>
     );
 }

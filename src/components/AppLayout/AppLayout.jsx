@@ -3,12 +3,12 @@ import './AppLayout.scss';
 import HeaderNav from '../../containers/HeaderNav/HeaderNav';
 import ScrollToTop from '../ScrollToTop/ScrollToTop';
 
-const AppLayout = (props) => {
+const AppLayout = ({ children }) => {
     return (
         <ScrollToTop>
             <div className='app-layout'>
                 <HeaderNav/>
-                {props.children}
+                {children}
             </div>
         </ScrollToTop>
     );

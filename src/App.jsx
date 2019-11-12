@@ -11,7 +11,7 @@ import { youtubeLibraryLoaded } from './store/actions/api';
 
 const apiKey = process.env.REACT_APP_YOUTUBE_API_KEY;
 
-const App = (props) => {
+const App = ({ youtubeLibraryLoaded }) => {
 
   const loadYoutubeApi = () => {
     const script = document.createElement("script");
@@ -21,7 +21,7 @@ const App = (props) => {
       window.gapi.load('client', () => {
         window.gapi.client.setApiKey(apiKey);
         window.gapi.client.load('youtube', 'v3', () => {
-          props.youtubeLibraryLoaded();
+          youtubeLibraryLoaded();
         });
       });
     };

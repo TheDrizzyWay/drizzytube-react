@@ -8,9 +8,9 @@ const Subscriptions = () => {
         <>
             <SideBarHeader title='Subscriptions'/>
             <Subscription label='MusicChannel' broadcasting/>
-            <Subscription label='Coursera' amountNewVideos={10}/>
-            <Subscription label='TEDx Talks' amountNewVideos={23}/>
-            <Subscription label='Stanford iOS' amountNewVideos={4}/>
+            <Subscription label='Arsenal FC' amountNewVideos={10}/>
+            <Subscription label='Traversy Media' amountNewVideos={23}/>
+            <Subscription label='LoveThoughts' amountNewVideos={4}/>
             <Subscription label='Udacity' amountNewVideos={114}/>
             <Divider/>
         </>

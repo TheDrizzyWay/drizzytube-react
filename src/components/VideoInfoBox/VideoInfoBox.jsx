@@ -5,13 +5,12 @@ import { getPublishedAtDateString } from '../../utils/date/date-format';
 import './VideoInfoBox.scss';
 import { getShortNumberString } from '../../utils/number/number-format';
 
-const VideoInfoBox = (props) => {
+const VideoInfoBox = ({ video, channel }) => {
     const [collapsed, setCollapsed] = useState(false);
     const toggleCollapse = () => {
         setCollapsed(!collapsed);
     };
 
-    const { video, channel } = props;
     if (!video || !channel) return <div/>;
 
     const getDescriptionParagraphs = () => {

@@ -3,8 +3,7 @@ import { Button, Divider, Icon } from 'semantic-ui-react';
 import Rating from '../Rating/Rating';
 import './VideoMetaData.scss';
 
-const VideoMetaData = (props) => {
-    const { video } = props;
+const VideoMetaData = ({ video }) => {
     if (!video || !video.statistics) return <div/>;
 
     const viewCount = Number(video.statistics.viewCount).toLocaleString();

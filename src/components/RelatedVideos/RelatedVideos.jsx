@@ -3,12 +3,11 @@ import './RelatedVideos.scss';
 import VideoPreview from '../VideoPreview/VideoPreview';
 import NextUp from '../NextUp/NextUp';
 
-const RelatedVideos = (props) => {
-    const { videos } = props;
+const RelatedVideos = ({ videos }) => {
     if (!videos || !videos.length) return <div className='related-videos' />;
 
-    const nextUpVideo = props.videos[0];
-    const remainingVideos = props.videos.slice(1);
+    const nextUpVideo = videos[0];
+    const remainingVideos = videos.slice(1);
 
     const relatedVideosPreviews = remainingVideos.map(relatedVideo => (
         <VideoPreview 

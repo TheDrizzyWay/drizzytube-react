@@ -4,9 +4,7 @@ import InfiniteScroll from '../InfiniteScroll/InfiniteScroll';
 import VideoPreview from '../VideoPreview/VideoPreview';
 import './VideoList.scss';
 
-const VideoList = (props) => {
-    const { videos } = props;
-
+const VideoList = ({ videos, bottomReachedCallback, showLoader }) => {
     const getVideoPreviews = () => {
         if(!videos || !videos.length) return null;
 
@@ -25,7 +23,7 @@ const VideoList = (props) => {
         <>
             <SideBar/>
             <div className='video-list'>
-                <InfiniteScroll bottomReachedCallback={props.bottomReachedCallback} showLoader={props.showLoader}>
+                <InfiniteScroll bottomReachedCallback={bottomReachedCallback} showLoader={showLoader}>
                     {videoPreviews}
                 </InfiniteScroll>
             </div>
