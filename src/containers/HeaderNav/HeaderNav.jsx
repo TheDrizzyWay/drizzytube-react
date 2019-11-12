@@ -1,10 +1,21 @@
-import React from 'react';
+import React, { useState} from 'react';
 import { Image, Menu, Form, Input, Icon } from 'semantic-ui-react';
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 import './HeaderNav.scss';
 import logo from '../../assets/images/ytube-logo.png';
 
-const HeaderNav = () => {
+const HeaderNav = (props) => {
+    const [query, setQuery] = useState({ query: '' });
+
+    const onInputChange = e => {
+        setQuery({ query: e.target.value });
+      };
+    
+    const onSubmit = () => {
+        const escapedSearchQuery = encodeURI(query);
+        props.history.push(`/search?search_query=${escapedSearchQuery}`);
+      };
+
     return (
         <Menu borderless className='top-menu' fixed='top'>
             <Menu.Item header className='logo'>
@@ -12,32 +23,38 @@ const HeaderNav = () => {
             </Menu.Item>
             <Menu.Menu className='nav-container'>
             <Menu.Item className='search-input'>
-                <Form>
+                <Form onSubmit={onSubmit}>
                     <Form.Field>
-                    <Input placeholder='Search' size='small' action='Go' />
+                    <Input
+                        placeholder='Search'
+                        size='small'
+                        action='Go'
+                        value={query}
+                        onChange={onInputChange}
+                    />
                     </Form.Field>
                 </Form>
             </Menu.Item>
             <Menu.Menu position='right'>
-            <Menu.Item>
-                <Icon className='header-icon' name='video camera' size='large'/>
-            </Menu.Item>
-            <Menu.Item>
-                <Icon className='header-icon' name='grid layout' size='large'/>
-            </Menu.Item>
-            <Menu.Item>
-                <Icon className='header-icon' name='chat' size='large'/>
-            </Menu.Item>
-            <Menu.Item>
-                <Icon className='header-icon' name='alarm' size='large'/>
-            </Menu.Item>
-            <Menu.Item name='avatar'>
-                <Image src='http://via.placeholder.com/80x80' avatar/>
-            </Menu.Item>
+                <Menu.Item>
+                    <Icon className='header-icon' name='video camera' size='large'/>
+                </Menu.Item>
+                <Menu.Item>
+                    <Icon className='header-icon' name='grid layout' size='large'/>
+                </Menu.Item>
+                <Menu.Item>
+                    <Icon className='header-icon' name='chat' size='large'/>
+                </Menu.Item>
+                <Menu.Item>
+                    <Icon className='header-icon' name='alarm' size='large'/>
+                </Menu.Item>
+                <Menu.Item name='avatar'>
+                    <Image src='http://via.placeholder.com/80x80' avatar/>
+                </Menu.Item>
             </Menu.Menu>
             </Menu.Menu>
         </Menu>
     );
 }
 
-export default HeaderNav;
+export default withRouter(HeaderNav);

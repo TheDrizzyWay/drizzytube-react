@@ -1,13 +1,10 @@
 import React, { useEffect} from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import VideoPreview from '../../components/VideoPreview/VideoPreview';
-import SideBar from '../SideBar/SideBar';
-import InfiniteScroll from '../../components/InfiniteScroll/InfiniteScroll';
+import VideoList from '../../components/VideoList/VideoList';
 import { getMostPopularVideos, getMostPopularVideosNextPageToken, allMostPopularVideosLoaded } from '../../store/reducers/video';
 import { getYoutubeLibraryLoaded } from '../../store/reducers/api';
 import * as videoActions from "../../store/actions/video";
-import './Trending.scss';
 
 const Trending = (props) => {
     const { youtubeLibraryLoaded, fetchMostPopularVideos } = props;
@@ -17,13 +14,6 @@ const Trending = (props) => {
             fetchMostPopularVideos(20, true);
         }
     }, [youtubeLibraryLoaded, fetchMostPopularVideos]);
-
-    const getVideoPreviews = () => {
-        return props.videos.map(video => (
-          <VideoPreview horizontal={true} expanded={true} video={video}
-          key={video.id} pathname={'/watch'} search={'?v=' + video.id}/>)
-        );
-    };
 
     const shouldShowLoader = () => {
         return !props.allMostPopularVideosLoaded;
@@ -36,19 +26,13 @@ const Trending = (props) => {
         }
     };
 
-    const previews = getVideoPreviews();
     const loaderActive = shouldShowLoader();
 
-    return (
-        <>
-            <SideBar/>
-            <div className='trending'>
-            <InfiniteScroll bottomReachedCallback={fetchMoreVideos} showLoader={loaderActive}>
-                {previews}
-            </InfiniteScroll>
-            </div>
-        </>
-    );
+    return (<VideoList
+      bottomReachedCallback={fetchMoreVideos}
+      showLoader={loaderActive}
+      videos={props.videos}
+      />);
 }
 
 const mapStateToProps = state => {
