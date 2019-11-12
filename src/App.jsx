@@ -37,7 +37,7 @@ const App = (props) => {
       <AppLayout>
         <Switch>
           <Route path="/feed/trending" component={Trending} />
-          <Route path="/results" component={Search} />
+          <Route path="/search" component={Search} />
           <Route path="/watch" component={Watch} />
           <Route path="/" component={Home} />
         </Switch>

@@ -5,10 +5,10 @@ import './HeaderNav.scss';
 import logo from '../../assets/images/ytube-logo.png';
 
 const HeaderNav = (props) => {
-    const [query, setQuery] = useState({ query: '' });
+    const [query, setQuery] = useState('');
 
     const onInputChange = e => {
-        setQuery({ query: e.target.value });
+        setQuery(e.target.value);
       };
     
     const onSubmit = () => {

@@ -11,7 +11,7 @@ export function* searchForVideos(searchQuery, nextPageToken, amount) {
 
 export function* watchSearchForVideos() {
   while (true) {
-    const {searchQuery, amount, nextPageToken} = yield take(searchActions.SEARCH_FOR_VIDEOS[REQUEST]);
+    const { searchQuery, amount, nextPageToken } = yield take(searchActions.SEARCH_FOR_VIDEOS[REQUEST]);
     yield fork(searchForVideos, searchQuery, nextPageToken, amount);
   }
 }
