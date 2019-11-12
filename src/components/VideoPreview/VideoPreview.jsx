@@ -11,7 +11,7 @@ TimeAgo.locale(en);
 const timeAgo = new TimeAgo('en-US');
 
 const VideoPreview = (props) => {
-  const { video, horizontal } = props;
+  const { video, horizontal, expanded } = props;
   if (!video) return <div/>;
   
   const horizontalClass = horizontal ? 'horizontal': null;
@@ -30,10 +30,12 @@ const VideoPreview = (props) => {
   };
 
   const viewAndTimeString = getFormattedViewAndTime(video);
+  const expandedView = expanded ? 'expanded' : null;
+  const description = expanded ? video.snippet.description : null;
 
     return (
       <Link to={{pathname: props.pathname, search: props.search}}>
-        <div className={['video-preview', horizontalClass].join(' ')}>
+        <div className={['video-preview', horizontalClass, expandedView].join(' ')}>
         <div className='image-container'>
           <Image src={video.snippet.thumbnails.medium.url} />
           <div className='time-label'>
@@ -41,12 +43,11 @@ const VideoPreview = (props) => {
           </div>
         </div>
         <div className='video-info'>
-            <div className='semi-bold show-max-two-lines'>{video.snippet.title}</div>
+            <div className={['semi-bold', 'show-max-two-lines', expandedView].join(' ')}>{video.snippet.title}</div>
             <div className='video-preview-metadata-container'>
                 <div className='channel-title'>{video.snippet.channelTitle}</div>
-                <div>
-                  <span>{viewAndTimeString}</span>
-                </div>
+                <div className='view-and-time'>{viewAndTimeString}</div>
+                <div className='show-max-two-lines'>{description}</div>
             </div>
             </div>
         </div>

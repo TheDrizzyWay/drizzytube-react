@@ -7,9 +7,14 @@
   &.horizontal {
     grid: auto / 210px auto;
     grid-column-gap: 4px;
+
     .video-info {
       grid-row: 1 / 2;
       grid-column: 2 / 3;
+    }
+
+    &.expanded {
+      grid: auto / 246px auto;
     }
   }
 
@@ -35,9 +40,18 @@
       line-height: 1.4em;
       max-height: 2.8em;
     }
+
+    .view-and-time {
+      margin-bottom: 10px;
+    }
   
     .semi-bold {
       font-weight: 600;
+
+      &.expanded {
+        font-weight: 400;
+        font-size: 1.3rem;
+      }
     }
   }
 
