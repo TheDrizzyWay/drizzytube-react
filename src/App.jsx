@@ -1,13 +1,14 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, lazy, Suspense } from 'react';
 import { Route, Switch, withRouter } from 'react-router-dom';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import Home from './containers/Home/Home';
-import Watch from './containers/Watch/Watch';
 import AppLayout from './components/AppLayout/AppLayout';
-import Trending from './containers/Trending/Trending';
-import Search from './containers/Search/Search';
 import { youtubeLibraryLoaded } from './store/actions/api';
+
+const Home = lazy(() => import('./containers/Home/Home'));
+const Watch = lazy(() => import('./containers/Watch/Watch'));
+const Trending = lazy(() => import('./containers/Trending/Trending'));
+const Search = lazy(() => import('./containers/Search/Search'));
 
 const apiKey = process.env.REACT_APP_YOUTUBE_API_KEY;
 
@@ -35,12 +36,14 @@ const App = ({ youtubeLibraryLoaded }) => {
 
   return (
       <AppLayout>
-        <Switch>
-          <Route path="/feed/trending" component={Trending} />
-          <Route path="/search" component={Search} />
-          <Route path="/watch" component={Watch} />
-          <Route path="/" component={Home} />
-        </Switch>
+        <Suspense fallback={<div>Loading...</div>}>
+          <Switch>
+            <Route path="/feed/trending" component={Trending} />
+            <Route path="/search" component={Search} />
+            <Route path="/watch" component={Watch} />
+            <Route path="/" component={Home} />
+          </Switch>
+        </Suspense>
       </AppLayout>
   );
 }
