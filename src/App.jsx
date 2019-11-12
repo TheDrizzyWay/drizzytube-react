@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 import Home from './containers/Home/Home';
 import Watch from './containers/Watch/Watch';
 import AppLayout from './components/AppLayout/AppLayout';
+import Trending from './containers/Trending/Trending';
 import { youtubeLibraryLoaded } from './store/actions/api';
 
 const apiKey = process.env.REACT_APP_YOUTUBE_API_KEY;
@@ -34,6 +35,7 @@ const App = (props) => {
   return (
       <AppLayout>
         <Switch>
+          <Route path="/feed/trending" component={Trending} />
           <Route path="/watch" component={Watch} />
           <Route path="/" component={Home} />
         </Switch>
