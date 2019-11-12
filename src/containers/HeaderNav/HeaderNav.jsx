@@ -2,7 +2,7 @@ import React, { useState} from 'react';
 import { Image, Menu, Form, Input, Icon } from 'semantic-ui-react';
 import { Link, withRouter } from 'react-router-dom';
 import './HeaderNav.scss';
-import logo from '../../assets/images/ytube-logo.png';
+import logo from '../../assets/images/driztubeicon.PNG';
 
 const HeaderNav = (props) => {
     const [query, setQuery] = useState('');
@@ -19,7 +19,7 @@ const HeaderNav = (props) => {
     return (
         <Menu borderless className='top-menu' fixed='top'>
             <Menu.Item header className='logo'>
-                <Link to="/"><Image src={logo} size='tiny'/></Link>
+                <Link to="/"><Image src={logo} size='large'/></Link>
             </Menu.Item>
             <Menu.Menu className='nav-container'>
             <Menu.Item className='search-input'>
