@@ -2,7 +2,7 @@ import React, { useState} from 'react';
 import { Image, Menu, Form, Input, Icon } from 'semantic-ui-react';
 import { Link, withRouter } from 'react-router-dom';
 import './HeaderNav.scss';
-import logo from '../../assets/images/driztubeicon.PNG';
+import logo from 'assets/images/driztubeicon.PNG';
 
 const HeaderNav = (props) => {
     const [query, setQuery] = useState('');

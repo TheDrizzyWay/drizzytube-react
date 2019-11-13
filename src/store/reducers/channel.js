@@ -1,6 +1,6 @@
-import { WATCH_DETAILS, VIDEO_DETAILS } from '../actions/watch';
-import { SUCCESS } from '../actions';
-import { CHANNEL_LIST_RESPONSE } from '../api/youtube-response-types';
+import { WATCH_DETAILS, VIDEO_DETAILS } from 'store/actions/watch';
+import { SUCCESS } from 'store/actions';
+import { CHANNEL_LIST_RESPONSE } from 'store/api/youtube-response-types';
 
 const initialState = {
   byId: {}

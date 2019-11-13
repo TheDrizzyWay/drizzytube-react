@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { Image, Button, Divider } from 'semantic-ui-react';
 import Linkify from 'react-linkify';
-import { getPublishedAtDateString } from '../../utils/date/date-format';
+import { getPublishedAtDateString } from 'utils/date/date-format';
 import './VideoInfoBox.scss';
-import { getShortNumberString } from '../../utils/number/number-format';
+import { getShortNumberString } from 'utils/number/number-format';
 
 const VideoInfoBox = ({ video, channel }) => {
     const [collapsed, setCollapsed] = useState(false);

@@ -1,10 +1,10 @@
 import React, { useEffect} from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import VideoList from '../../components/VideoList/VideoList';
-import { getMostPopularVideos, getMostPopularVideosNextPageToken, allMostPopularVideosLoaded } from '../../store/reducers/video';
-import { getYoutubeLibraryLoaded } from '../../store/reducers/api';
-import * as videoActions from "../../store/actions/video";
+import VideoList from 'components/VideoList/VideoList';
+import { getMostPopularVideos, getMostPopularVideosNextPageToken, allMostPopularVideosLoaded } from 'store/reducers/video';
+import { getYoutubeLibraryLoaded } from 'store/reducers/api';
+import * as videoActions from 'store/actions/video';
 
 const Trending = (props) => {
     const { youtubeLibraryLoaded, fetchMostPopularVideos } = props;

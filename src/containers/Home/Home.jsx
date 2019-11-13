@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
-import * as videoActions from '../../store/actions/video';
+import * as videoActions from 'store/actions/video';
 import { bindActionCreators } from 'redux';
-import { getYoutubeLibraryLoaded } from '../../store/reducers/api';
-import { getVideoCategoryIds, videoCategoriesLoaded, videosByCategoryLoaded } from '../../store/reducers/video';
+import { getYoutubeLibraryLoaded } from 'store/reducers/api';
+import { getVideoCategoryIds, videoCategoriesLoaded, videosByCategoryLoaded } from 'store/reducers/video';
 import SideBar from '../SideBar/SideBar';
 import HomeContent from './HomeContent/HomeContent';
 

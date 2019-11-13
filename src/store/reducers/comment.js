@@ -1,9 +1,9 @@
 import { createSelector } from 'reselect';
-import { SUCCESS } from '../actions';
-import { WATCH_DETAILS } from '../actions/watch';
-import { COMMENT_THREAD_LIST_RESPONSE } from '../api/youtube-response-types';
-import { COMMENT_THREAD } from '../actions/comment';
-import { getSearchParam } from '../../utils/url';
+import { SUCCESS } from 'store/actions';
+import { WATCH_DETAILS } from 'store/actions/watch';
+import { COMMENT_THREAD_LIST_RESPONSE } from 'store/api/youtube-response-types';
+import { COMMENT_THREAD } from 'store/actions/comment';
+import { getSearchParam } from 'utils/url';
 
 const initialState = {
   byVideo: {},

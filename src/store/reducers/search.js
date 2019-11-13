@@ -1,5 +1,5 @@
-import { SEARCH_FOR_VIDEOS } from '../actions/search';
-import { SUCCESS, REQUEST } from '../actions';
+import { SEARCH_FOR_VIDEOS } from 'store/actions/search';
+import { SUCCESS, REQUEST } from 'store/actions';
 
 const reduceSearchForVideos = (response, searchQuery, prevState) => {
     let searchResults = response.items.map(item => ({...item, id: item.id.videoId}));

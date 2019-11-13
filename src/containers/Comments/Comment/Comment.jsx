@@ -1,6 +1,6 @@
 import React from 'react';
 import { Button, Image } from 'semantic-ui-react';
-import Rating from '../../../components/Rating/Rating';
+import Rating from 'components/Rating/Rating';
 import './Comment.scss';
 
 const Comment = (props) => {

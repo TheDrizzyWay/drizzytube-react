@@ -3,8 +3,8 @@ import { Link } from 'react-router-dom';
 import { Image } from 'semantic-ui-react';
 import TimeAgo from 'javascript-time-ago';
 import en from 'javascript-time-ago/locale/en';
-import { getShortNumberString } from '../../utils/number/number-format';
-import { getVideoDurationString } from '../../utils/date/date-format';
+import { getShortNumberString } from 'utils/number/number-format';
+import { getVideoDurationString } from 'utils/date/date-format';
 import './VideoPreview.scss';
 
 TimeAgo.locale(en);

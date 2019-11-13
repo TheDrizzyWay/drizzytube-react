@@ -2,13 +2,13 @@ import React, { useEffect, lazy, Suspense } from 'react';
 import { Route, Switch, withRouter } from 'react-router-dom';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import AppLayout from './components/AppLayout/AppLayout';
-import { youtubeLibraryLoaded } from './store/actions/api';
+import AppLayout from 'components/AppLayout/AppLayout';
+import { youtubeLibraryLoaded } from 'store/actions/api';
 
-const Home = lazy(() => import('./containers/Home/Home'));
-const Watch = lazy(() => import('./containers/Watch/Watch'));
-const Trending = lazy(() => import('./containers/Trending/Trending'));
-const Search = lazy(() => import('./containers/Search/Search'));
+const Home = lazy(() => import('containers/Home/Home'));
+const Watch = lazy(() => import('containers/Watch/Watch'));
+const Trending = lazy(() => import('containers/Trending/Trending'));
+const Search = lazy(() => import('containers/Search/Search'));
 
 const apiKey = process.env.REACT_APP_YOUTUBE_API_KEY;
 

@@ -1,5 +1,5 @@
 import React from 'react';
-import SideBar from '../../containers/SideBar/SideBar';
+import SideBar from 'containers/SideBar/SideBar';
 import InfiniteScroll from '../InfiniteScroll/InfiniteScroll';
 import VideoPreview from '../VideoPreview/VideoPreview';
 import './VideoList.scss';

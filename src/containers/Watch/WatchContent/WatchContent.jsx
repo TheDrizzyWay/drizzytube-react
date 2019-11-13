@@ -1,15 +1,15 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import Video from '../../../components/Video/Video';
-import RelatedVideos from '../../../components/RelatedVideos/RelatedVideos';
-import VideoMetaData from '../../../components/VideoMetaData/VideoMetaData';
-import VideoInfoBox from '../../../components/VideoInfoBox/VideoInfoBox';
+import Video from 'components/Video/Video';
+import RelatedVideos from 'components/RelatedVideos/RelatedVideos';
+import VideoMetaData from 'components/VideoMetaData/VideoMetaData';
+import VideoInfoBox from 'components/VideoInfoBox/VideoInfoBox';
 import Comments from '../../Comments/Comments';
-import InfiniteScroll from '../../../components/InfiniteScroll/InfiniteScroll';
+import InfiniteScroll from 'components/InfiniteScroll/InfiniteScroll';
 import './WatchContent.scss';
-import { getVideoById, getRelatedVideos, getAmountComments } from '../../../store/reducers/video';
-import { getChannel } from '../../../store/reducers/channel';
-import { getCommentsForVideo } from '../../../store/reducers/comment';
+import { getVideoById, getRelatedVideos, getAmountComments } from 'store/reducers/video';
+import { getChannel } from 'store/reducers/channel';
+import { getCommentsForVideo } from 'store/reducers/comment';
 
 const WatchContent = (props) => {
     if (!props.videoId) return <div/>;

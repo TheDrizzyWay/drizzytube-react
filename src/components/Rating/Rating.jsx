@@ -1,7 +1,7 @@
 import React from 'react';
 import { Icon, Progress } from 'semantic-ui-react';
 import './Rating.scss';
-import { getShortNumberString } from '../../utils/number/number-format';
+import { getShortNumberString } from 'utils/number/number-format';
 
 const Rating = (props) => {
     let rating = null;

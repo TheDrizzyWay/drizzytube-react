@@ -1,9 +1,9 @@
 import { createSelector } from 'reselect';
-import { MOST_POPULAR, VIDEO_CATEGORIES, MOST_POPULAR_BY_CATEGORY } from '../actions/video';
-import { SUCCESS } from '../actions';
-import { VIDEO_DETAILS, WATCH_DETAILS } from '../actions/watch';
-import { VIDEO_LIST_RESPONSE, SEARCH_LIST_RESPONSE } from '../api/youtube-response-types';
-import { getSearchParam } from '../../utils/url';
+import { MOST_POPULAR, VIDEO_CATEGORIES, MOST_POPULAR_BY_CATEGORY } from 'store/actions/video';
+import { SUCCESS } from 'store/actions';
+import { VIDEO_DETAILS, WATCH_DETAILS } from 'store/actions/watch';
+import { VIDEO_LIST_RESPONSE, SEARCH_LIST_RESPONSE } from 'store/api/youtube-response-types';
+import { getSearchParam } from 'utils/url';
 
 const initialState = {
   byId: {},

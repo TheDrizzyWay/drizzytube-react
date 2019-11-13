@@ -1,11 +1,11 @@
 import React, { useEffect, useCallback } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import VideoList from '../../components/VideoList/VideoList';
-import * as searchActions from '../../store/actions/search';
-import { getYoutubeLibraryLoaded } from '../../store/reducers/api';
-import { getSearchResults, getSearchNextPageToken } from '../../store/reducers/search';
-import { getSearchParam } from '../../utils/url';
+import VideoList from 'components/VideoList/VideoList';
+import * as searchActions from 'store/actions/search';
+import { getYoutubeLibraryLoaded } from 'store/reducers/api';
+import { getSearchResults, getSearchNextPageToken } from 'store/reducers/search';
+import { getSearchParam } from 'utils/url';
 
 const Search = (props) => {
     const { youtubeApiLoaded, location, history, searchForVideos } = props;

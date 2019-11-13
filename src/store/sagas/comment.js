@@ -1,7 +1,7 @@
 import { fork, take } from 'redux-saga/effects';
-import { REQUEST } from '../actions';
-import * as commentActions from '../actions/comment'
-import * as api from '../api/youtube-api';
+import { REQUEST } from 'store/actions';
+import * as commentActions from 'store/actions/comment';
+import * as api from 'store/api/youtube-api';
 import { fetchEntity } from './index';
 
 export function* fetchCommentThread(videoId, nextPageToken) {

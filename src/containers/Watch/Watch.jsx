@@ -3,12 +3,12 @@ import { withRouter } from 'react-router-dom';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import WatchContent from './WatchContent/WatchContent';
-import { getYoutubeLibraryLoaded } from '../../store/reducers/api';
-import { getChannelId } from '../../store/reducers/video';
-import * as watchActions from '../../store/actions/watch';
-import * as commentActions from '../../store/actions/comment';
-import { getSearchParam } from '../../utils/url';
-import { getCommentNextPageToken } from '../../store/reducers/comment';
+import { getYoutubeLibraryLoaded } from 'store/reducers/api';
+import { getChannelId } from 'store/reducers/video';
+import * as watchActions from 'store/actions/watch';
+import * as commentActions from 'store/actions/comment';
+import { getSearchParam } from 'utils/url';
+import { getCommentNextPageToken } from 'store/reducers/comment';
 
 const Watch = (props) => {
     const { youtubeLibraryLoaded, fetchWatchDetails, history, location, channelId, nextPageToken } = props;
