@@ -21,3 +21,16 @@
         color: #a0a0a0;
       }
   }
+
+@media(max-width: 768px) {
+  .ui.menu.top-menu {
+    width: 100%;
+    .logo {
+      width: 40%;
+    }
+  }
+
+  .ui.large {
+    height: 60%;
+  }
+}

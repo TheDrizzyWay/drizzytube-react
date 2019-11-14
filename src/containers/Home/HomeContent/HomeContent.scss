@@ -48,3 +48,9 @@
       max-width: 1284px;
     }
   }
+
+  @media(max-width: 768px) {
+    .home-content {
+      margin-left: 25%;
+    }
+  }

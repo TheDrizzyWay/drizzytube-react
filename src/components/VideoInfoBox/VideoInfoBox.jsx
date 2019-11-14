@@ -6,7 +6,7 @@ import './VideoInfoBox.scss';
 import { getShortNumberString } from 'utils/number/number-format';
 
 const VideoInfoBox = ({ video, channel }) => {
-    const [collapsed, setCollapsed] = useState(false);
+    const [collapsed, setCollapsed] = useState(true);
     const toggleCollapse = () => {
         setCollapsed(!collapsed);
     };

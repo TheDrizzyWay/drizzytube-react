@@ -36,7 +36,7 @@ const App = ({ youtubeLibraryLoaded }) => {
 
   return (
       <AppLayout>
-        <Suspense fallback={<div>Loading...</div>}>
+        <Suspense fallback={<div></div>}>
           <Switch>
             <Route path="/feed/trending" component={Trending} />
             <Route path="/search" component={Search} />
