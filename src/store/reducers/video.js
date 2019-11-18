@@ -1,6 +1,6 @@
 import { createSelector } from 'reselect';
 import { MOST_POPULAR, VIDEO_CATEGORIES, MOST_POPULAR_BY_CATEGORY } from 'store/actions/video';
-import { SUCCESS } from 'store/actions';
+import { SUCCESS, REQUEST } from 'store/actions';
 import { VIDEO_DETAILS, WATCH_DETAILS } from 'store/actions/watch';
 import { VIDEO_LIST_RESPONSE, SEARCH_LIST_RESPONSE } from 'store/api/youtube-response-types';
 import { getSearchParam } from 'utils/url';
@@ -9,7 +9,8 @@ const initialState = {
   byId: {},
   mostPopular: {},
   categories: {},
-  related: {}
+  related: {},
+  globalLoader: false
 };
 
 const reduceFetchMostPopularVideos = (response, prevState) => {
@@ -88,6 +89,7 @@ const reduceFetchMostPopularVideos = (response, prevState) => {
       ...prevState,
       byId: { ...prevState.byId, ...videoMap },
       byCategory: { ...prevState.byCategory, ...byCategoryMap },
+      globalLoader: false
     };
   };
 
@@ -140,6 +142,11 @@ const reduceFetchMostPopularVideos = (response, prevState) => {
 
 const videosReducer = (state = initialState, { type, response, categories }) => {
   switch (type) {
+    case MOST_POPULAR[REQUEST]:
+      return {
+        ...state,
+        globalLoader: true
+      };
     case MOST_POPULAR[SUCCESS]:
       return reduceFetchMostPopularVideos(response, state);
     case VIDEO_CATEGORIES[SUCCESS]:
@@ -204,6 +211,8 @@ export const videosByCategoryLoaded = createSelector(
 export const getVideoById = (state, videoId) => {
   return state.videos.byId[videoId];
 };
+
+export const getGlobalLoading = state => state.videos.globalLoader;
 
 const getRelatedVideoIds = (state, videoId) => {
   const related = state.videos.related[videoId];

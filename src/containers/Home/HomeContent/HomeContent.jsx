@@ -1,5 +1,5 @@
 import React from 'react';
-import { getMostPopularVideos, getVideosByCategory } from 'store/reducers/video';
+import { getMostPopularVideos, getVideosByCategory, getGlobalLoading } from 'store/reducers/video';
 import { connect } from 'react-redux';
 import VideoGrid from 'components/VideoGrid/VideoGrid';
 import InfiniteScroll from 'components/InfiniteScroll/InfiniteScroll';
@@ -15,7 +15,7 @@ const HomeContent = (props) => {
     return categoryTitles.map((categoryTitle, index) => {
       const videos = props.videosByCategory[categoryTitle];
       const hideDivider = index === categoryTitles.length - 1;
-      return <VideoGrid title={categoryTitle} videos={videos} key={categoryTitle} hideDivider={hideDivider}/>;
+      return <VideoGrid title={categoryTitle} videos={videos} key={categoryTitle} hideDivider={hideDivider} loading={props.loadingState} />;
       });
     };
 
@@ -25,7 +25,7 @@ const HomeContent = (props) => {
         <div className='home-content'>
             <div className="responsive-video-grid-container">
             <InfiniteScroll bottomReachedCallback={props.bottomReachedCallback} showLoader={props.showLoader}>
-                <VideoGrid title='Trending' videos={trendingVideos}/>
+                <VideoGrid title='Trending' videos={trendingVideos} loading={props.loadingState} />
                 {categoryGrids}
             </InfiniteScroll>
             </div>
@@ -37,6 +37,7 @@ const mapStateToProps = state => {
     return {
         videosByCategory: getVideosByCategory(state),
         mostPopularVideos: getMostPopularVideos(state),
+        loadingState: getGlobalLoading(state)
      };
   };
 
