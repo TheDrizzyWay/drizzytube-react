@@ -1,12 +1,3 @@
-# drizzytube-react
-A youtube (web) clone built with react/redux-saga/reselect and youtube api v3.
-
-Find live project [here](https://laughing-boyd-7f4065.netlify.com/)
-
-
-
-
-
 
 [![MIT License][license-shield]][license-url]
 
@@ -15,7 +6,7 @@ Find live project [here](https://laughing-boyd-7f4065.netlify.com/)
 <br />
 <p align="center">
   <a href="https://github.com/TheDrizzyWay/drizzytube-react">
-    <img src="src/assets/images/driztubeicon.PNG" alt="Logo" width="100" height="70">
+    <img src="src/assets/images/driztubeicon.PNG" alt="Logo" width="200" height="100">
   </a>
 
   <h3 align="center">DRIZZYTUBE</h3>
@@ -33,49 +24,38 @@ Find live project [here](https://laughing-boyd-7f4065.netlify.com/)
 ## Table of Contents
 
 * [About the Project](#about-the-project)
-  * [Built With](#built-with)
+* [Built With](#built-with)
 * [Getting Started](#getting-started)
-  * [Prerequisites](#prerequisites)
-  * [Installation](#installation)
-* [Usage](#usage)
-* [Roadmap](#roadmap)
-* [Contributing](#contributing)
+* [Prerequisites](#prerequisites)
+* [Installation](#installation)
 * [License](#license)
-* [Contact](#contact)
-* [Acknowledgements](#acknowledgements)
 
 
 
-<!-- ABOUT THE PROJECT -->
 ## About The Project
 
-[![Product Name Screen Shot][product-screenshot]](https://example.com)
+[![DrizzyTube Screen Shot][product-screenshot]](https://laughing-boyd-7f4065.netlify.com/)
 
-Here's a blank template to get started:
-**To avoid retyping too much info. Do a search and replace with your text editor for the following:**
-`TheDrizzyWay`, `drizzytube-react`, `twitter_handle`, `email`
+An attempt at recreating the web version of youtube.
 
 
 ### Built With
 
-* []()
-* []()
-* []()
+* [React](https://reactjs.org/)
+* [Redux Saga](https://redux-saga.js.org/)
+* [Reselect](https://github.com/reduxjs/reselect)
+* [Youtube api v3](https://developers.google.com/youtube/v3)
 
 
 
-<!-- GETTING STARTED -->
 ## Getting Started
 
-To get a local copy up and running follow these simple steps.
+To get a local copy up and running, follow these simple steps.
 
 ### Prerequisites
 
-This is an example of how to list things you need to use the software and how to install them.
 * npm
-```sh
-npm install npm@latest -g
-```
+* google developer account
 
 ### Installation
  
@@ -87,65 +67,19 @@ git clone https://github.com/TheDrizzyWay/drizzytube-react.git
 ```sh
 npm install
 ```
+3. Create a `.env` file in the root directory following the format in the `.env.sample` file provided.
+4. Get a youtube api key and include it in the created file.
 
 
 
-<!-- USAGE EXAMPLES -->
-## Usage
-
-Use this space to show useful examples of how a project can be used. Additional screenshots, code examples and demos work well in this space. You may also link to more resources.
-
-_For more examples, please refer to the [Documentation](https://example.com)_
 
 
-
-<!-- ROADMAP -->
-## Roadmap
-
-See the [open issues](https://github.com/TheDrizzyWay/drizzytube-react/issues) for a list of proposed features (and known issues).
-
-
-
-<!-- CONTRIBUTING -->
-## Contributing
-
-Contributions are what make the open source community such an amazing place to be learn, inspire, and create. Any contributions you make are **greatly appreciated**.
-
-1. Fork the Project
-2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the Branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
-
-
-
-<!-- LICENSE -->
 ## License
 
 Distributed under the MIT License. See `LICENSE` for more information.
 
 
 
-<!-- CONTACT -->
-## Contact
-
-Your Name - [@twitter_handle](https://twitter.com/twitter_handle) - email
-
-Project Link: [https://github.com/TheDrizzyWay/drizzytube-react](https://github.com/TheDrizzyWay/drizzytube-react)
-
-
-
-<!-- ACKNOWLEDGEMENTS -->
-## Acknowledgements
-
-* []()
-* []()
-* []()
-
-
-
-
-
 [license-shield]: https://img.shields.io/github/license/othneildrew/Best-README-Template.svg?style=flat-square
 [license-url]: https://github.com/TheDrizzyWay/drizzytube-react/blob/master/LICENSE.txt
-[product-screenshot]: images/screenshot.png
+[product-screenshot]: src/assets/images/driztubess.PNG
