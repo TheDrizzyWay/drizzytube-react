@@ -1,5 +1,6 @@
 
 [![MIT License][license-shield]][license-url]
+[![Netlify Status][netlify-shield]][netlify-url]
 
 
 
@@ -82,4 +83,6 @@ Distributed under the MIT License. See `LICENSE` for more information.
 
 [license-shield]: https://img.shields.io/github/license/othneildrew/Best-README-Template.svg?style=flat-square
 [license-url]: https://github.com/TheDrizzyWay/drizzytube-react/blob/master/LICENSE.txt
+[netlify-shield]: https://api.netlify.com/api/v1/badges/b3a580be-ced4-4770-b7d0-190245606119/deploy-status
+[netlify-url]: https://app.netlify.com/sites/laughing-boyd-7f4065/deploys
 [product-screenshot]: src/assets/images/driztubess.PNG
